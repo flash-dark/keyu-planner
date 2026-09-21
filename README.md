@@ -25,4 +25,7 @@ python -m http.server 5173
 
 ## 说明
 
+仓库：https://github.com/flash-dark/keyu-planner  
+在线预览：https://flash-dark.github.io/keyu-planner/
+
 题目自拟，范围控制在个人可完成。本仓库仅用于课程作业回收。
