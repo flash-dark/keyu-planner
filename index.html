@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>课余 · 个人小助手</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <aside class="spine" aria-hidden="true"></aside>
+
+      <header class="hero">
+        <p class="eyebrow">互联网软件 · 氛围编程小项目</p>
+        <h1>课余</h1>
+        <p class="lede">把今天的课、作业和琐事放在同一页。数据只留在这台电脑的浏览器里。</p>
+        <div class="stats" id="stats"></div>
+      </header>
+
+      <nav class="tabs" role="tablist">
+        <button class="tab is-active" data-tab="today" type="button">今日</button>
+        <button class="tab" data-tab="schedule" type="button">课表</button>
+        <button class="tab" data-tab="todos" type="button">待办</button>
+      </nav>
+
+      <main>
+        <section id="panel-today" class="panel is-active" role="tabpanel">
+          <div class="split">
+            <article class="card">
+              <h2>今天的课</h2>
+              <p class="muted" id="today-date"></p>
+              <ul class="course-list" id="today-courses"></ul>
+            </article>
+            <article class="card">
+              <h2>还没做完</h2>
+              <ul class="todo-list" id="today-todos"></ul>
+            </article>
+          </div>
+        </section>
+
+        <section id="panel-schedule" class="panel" role="tabpanel" hidden>
+          <article class="card">
+            <div class="toolbar">
+              <h2>本周课表（示例）</h2>
+              <label>
+                按星期看
+                <select id="weekday-filter">
+                  <option value="all">整周</option>
+                  <option value="1">周一</option>
+                  <option value="2">周二</option>
+                  <option value="3">周三</option>
+                  <option value="4">周四</option>
+                  <option value="5">周五</option>
+                  <option value="6">周六</option>
+                  <option value="0">周日</option>
+                </select>
+              </label>
+            </div>
+            <div class="timetable" id="timetable"></div>
+          </article>
+        </section>
+
+        <section id="panel-todos" class="panel" role="tabpanel" hidden>
+          <article class="card">
+            <h2>记下要做的事</h2>
+            <form id="todo-form" class="todo-form">
+              <input
+                id="todo-title"
+                name="title"
+                type="text"
+                maxlength="80"
+                placeholder="例如：把互联网软件作业推进 GitHub"
+                required
+              />
+              <select id="todo-tag" name="tag">
+                <option value="作业">作业</option>
+                <option value="课程">课程</option>
+                <option value="生活">生活</option>
+              </select>
+              <input id="todo-due" name="due" type="date" />
+              <button type="submit">加上</button>
+            </form>
+            <div class="chips" id="todo-filters">
+              <button type="button" data-filter="all" class="chip is-on">全部</button>
+              <button type="button" data-filter="open" class="chip">未完成</button>
+              <button type="button" data-filter="done" class="chip">已完成</button>
+              <button type="button" data-filter="作业" class="chip">作业</button>
+              <button type="button" data-filter="课程" class="chip">课程</button>
+              <button type="button" data-filter="生活" class="chip">生活</button>
+            </div>
+            <ul class="todo-list" id="todo-list"></ul>
+          </article>
+        </section>
+      </main>
+
+      <footer class="foot">
+        示例课表是虚构的。待办使用 localStorage，关掉页面也不会丢，清站点数据才会清空。
+      </footer>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
